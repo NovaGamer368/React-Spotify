@@ -21,20 +21,26 @@ const TopTracks = ({ token }) => {
   }, [token]);
 
   return (
-    <div>
-      <h2>Top Tracks</h2>
-      <ul>
+    <div className="d-flex flex-column flex-space-1">
+      <h2 className="mt-4 text-center">Top Tracks</h2>
+      <ul className="list-group flex-row flex-wrap">
         {topTracks.map((track) => (
-          <li key={track.id}>
-            <div>
+          <li
+            key={track.id}
+            className="list-group-item list-group-item-action w-50 p-3 bg-primary text-white"
+          >
+            <div className="d-flex justify-content-between align-items-center">
               <img
                 src={track.album.images[0]?.url}
                 alt={track.name}
                 style={{ width: "50px", height: "50px" }}
               />
-              <p>
-                {track.name} - {track.artists[0].name}
-              </p>
+              <div>
+                <h5 className="mb-1">{track.name}</h5>
+                <div className="text-end">
+                  {track.artists.map((artist) => artist.name).join(", ")}
+                </div>
+              </div>
             </div>
           </li>
         ))}
