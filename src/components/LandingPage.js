@@ -14,8 +14,6 @@ const LandingPage = () => {
     process.env.REACT_APP_RESPONSE_TYPE
   }&show_dialog=true`;
 
-  console.log(loginUrl);
-
   useEffect(() => {
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token");
@@ -36,9 +34,11 @@ const LandingPage = () => {
   return (
     <>
       {!token ? (
-        <a href={loginUrl} onClick={console.log(loginUrl)}>
-          Login with Spotify
-        </a>
+        <div className="text-center">
+          <a className="btn btn-primary btn-lg" href={loginUrl}>
+            Login with Spotify
+          </a>
+        </div>
       ) : (
         <>
           <CurrentlyPlaying token={token} />

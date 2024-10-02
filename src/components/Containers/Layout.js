@@ -6,10 +6,12 @@ const Layout = ({ children }) => {
       <head>
         <title>React Spotify</title>
       </head>
-      <h1>React Spotify App</h1>
-      <div>{children}</div>
+      <div className="container mt-5">
+        <h1 className="text-center">React Spotify App</h1>
+        <div>{children}</div>
+      </div>
       <footer>
-        <div className="App">
+        <div>
           &copy; {new Date().getFullYear()} Brennan Phifer. All rights reserved.
         </div>
       </footer>

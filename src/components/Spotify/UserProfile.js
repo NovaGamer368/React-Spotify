@@ -12,6 +12,7 @@ const UserProfile = ({ token }) => {
       });
       const data = await response.json();
       setUserProfile(data);
+      console.log(data);
     };
 
     fetchProfile();
@@ -27,9 +28,12 @@ const UserProfile = ({ token }) => {
             alt="User Profile"
             style={{ borderRadius: "50%" }}
           />
+          <p>Email: {userProfile.email}</p>
+          <br />
           <a href={userProfile.external_urls.spotify}>
             View profile on Spotify
           </a>
+
           <p>Followers: {userProfile.followers.total}</p>
         </div>
       ) : (
