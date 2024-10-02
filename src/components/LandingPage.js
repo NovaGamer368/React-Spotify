@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import TopTracks from "./Spotify/Top-Tracks";
 import UserProfile from "./Spotify/UserProfile";
 import Playlists from "./Spotify/Playlists";
+import CurrentlyPlaying from "./Spotify/CurrentlyPlaying";
 
 const LandingPage = () => {
   const [token, setToken] = useState("");
@@ -9,9 +10,11 @@ const LandingPage = () => {
     process.env.REACT_APP_CLIENT_ID
   }&redirect_uri=${encodeURIComponent(
     process.env.REACT_APP_REDIRECT_URI
-  )}&scope=${process.env.REACT_APP_SCOPE}&response_type=${
+  )}&scope=${encodeURIComponent(process.env.REACT_APP_SCOPE)}&response_type=${
     process.env.REACT_APP_RESPONSE_TYPE
-  }`;
+  }&show_dialog=true`;
+
+  console.log(loginUrl);
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -38,6 +41,7 @@ const LandingPage = () => {
         </a>
       ) : (
         <>
+          <CurrentlyPlaying token={token} />
           <TopTracks token={token} />
           <UserProfile token={token} />
           <Playlists token={token} />
