@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import TopTracks from "./components/Top-Tracks";
+import TopTracks from "./Top-Tracks";
 
-const App = () => {
+const LandingPage = () => {
   const [token, setToken] = useState("");
   const loginUrl = `${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${
     process.env.REACT_APP_CLIENT_ID
@@ -29,7 +29,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App">
+    <>
       {!token ? (
         <a href={loginUrl} onClick={console.log(loginUrl)}>
           Login with Spotify
@@ -37,8 +37,8 @@ const App = () => {
       ) : (
         <TopTracks token={token} />
       )}
-    </div>
+    </>
   );
 };
 
-export default App;
+export default LandingPage;
