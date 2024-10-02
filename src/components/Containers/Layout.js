@@ -7,7 +7,8 @@ const Layout = ({ children }) => {
         <title>React Spotify</title>
       </head>
       <div className="container mt-5">
-        <h1 className="text-center">React Spotify App</h1>
+        <h1 className="text-center fw-bold">React Spotify App</h1>
+        <hr />
         <div>{children}</div>
       </div>
       <footer>
