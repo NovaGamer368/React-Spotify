@@ -12,7 +12,6 @@ const UserProfile = ({ token }) => {
       });
       const data = await response.json();
       setUserProfile(data);
-      console.log(data);
     };
 
     fetchProfile();

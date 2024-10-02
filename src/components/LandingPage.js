@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import TopTracks from "./Spotify/Top-Tracks";
 import UserProfile from "./Spotify/UserProfile";
+import Playlists from "./Spotify/Playlists";
 
 const LandingPage = () => {
   const [token, setToken] = useState("");
@@ -39,6 +40,7 @@ const LandingPage = () => {
         <>
           <TopTracks token={token} />
           <UserProfile token={token} />
+          <Playlists token={token} />
         </>
       )}
     </>
