@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 const CurrentlyPlaying = ({ token }) => {
   const [currentTrack, setCurrentTrack] = useState(null);
   const [progress, setProgress] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     const fetchCurrentTrack = async () => {
@@ -21,6 +22,7 @@ const CurrentlyPlaying = ({ token }) => {
         const data = await response.json();
         setCurrentTrack(data);
         setProgress(data.progress_ms);
+        setIsPlaying(data.is_playing);
       }
     };
 
@@ -35,6 +37,26 @@ const CurrentlyPlaying = ({ token }) => {
       return (progress / duration) * 100; // Calculate percentage
     }
     return 0;
+  };
+
+  const togglePlayback = async () => {
+    if (isPlaying) {
+      await fetch("https://api.spotify.com/v1/me/player/pause", {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setIsPlaying(false);
+    } else {
+      await fetch("https://api.spotify.com/v1/me/player/play", {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setIsPlaying(true);
+    }
   };
 
   return (
@@ -76,8 +98,15 @@ const CurrentlyPlaying = ({ token }) => {
           </div>
         </div>
       ) : (
-        <p>No track is currently playing.</p>
+        <>
+          <div className="text-center my-4">
+            <p className="text-muted mt-2">No track is currently playing.</p>
+          </div>
+        </>
       )}
+      <button className="btn btn-primary mt-3 rounded" onClick={togglePlayback}>
+        {isPlaying ? "Pause" : "Play"}
+      </button>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import TopTracks from "./Spotify/Top-Tracks";
+import TopTracks from "./Spotify/TopTracks";
 import CurrentlyPlaying from "./Spotify/CurrentlyPlaying";
 
 const LandingPage = () => {

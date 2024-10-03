@@ -50,10 +50,9 @@ const NavigationBar = () => {
         {token ? (
           <div className="nav-item dropdown d-flex justify-content-end w-100">
             <button
-              className="nav-link dropdown-toggle text-white"
+              className="dropdown-toggle text-white"
               onClick={toggleDropdown}
               id="navbarDropdown"
-              role="button"
               aria-haspopup="true"
               aria-expanded={showDropdown}
             >

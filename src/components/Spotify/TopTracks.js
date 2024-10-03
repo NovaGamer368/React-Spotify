@@ -22,6 +22,12 @@ const TopTracks = ({ token }) => {
     fetchInitialTracks();
   }, [token]);
 
+  useEffect(() => {
+    if (offset > 0) {
+      fetchMoreTracks();
+    }
+  }, [offset]);
+
   const fetchMoreTracks = async () => {
     const response = await fetch(
       `https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=10&offset=${offset}`,
@@ -30,7 +36,7 @@ const TopTracks = ({ token }) => {
           Authorization: `Bearer ${token}`,
         },
       }
-    );
+    ).catch((e) => console.error("Error fetching more tracks ", e));
     const data = await response.json();
 
     if (data.items.length > 0) {
@@ -43,12 +49,6 @@ const TopTracks = ({ token }) => {
   const handleViewMore = () => {
     setOffset((prevOffset) => prevOffset + 10);
   };
-
-  useEffect(() => {
-    if (offset > 0) {
-      fetchMoreTracks();
-    }
-  }, [offset]);
 
   const memoizedTopTracks = useMemo(() => {
     return topTracks.map((track) => ({
