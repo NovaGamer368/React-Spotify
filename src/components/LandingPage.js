@@ -22,6 +22,11 @@ const LandingPage = () => {
     <>
       {!token ? (
         <div className="text-center">
+          <h4 className="mb-4">
+            A small React.js project that connects to the Spotify API where you
+            can log in with your Spotify account to see what you are currently
+            listening to, your top songs, and your playlists.
+          </h4>
           <a className="btn btn-primary btn-lg" href={loginUrl}>
             Login with Spotify
           </a>

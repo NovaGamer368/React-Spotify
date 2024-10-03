@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Loading from "../Loading";
 
 const UserProfile = ({ token }) => {
   const [userProfile, setUserProfile] = useState(null);
@@ -53,7 +54,7 @@ const UserProfile = ({ token }) => {
           </div>
         </div>
       ) : (
-        <p>Loading profile...</p>
+        <Loading />
       )}
     </div>
   );

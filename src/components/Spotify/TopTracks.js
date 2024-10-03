@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
+import Loading from "../Loading";
 
 const TopTracks = ({ token }) => {
   const [topTracks, setTopTracks] = useState([]);
@@ -58,6 +59,10 @@ const TopTracks = ({ token }) => {
       imageUrl: track.album.images[0]?.url,
     }));
   }, [topTracks]);
+
+  if (memoizedTopTracks <= 0) {
+    return <Loading />;
+  }
 
   return (
     <div className="d-flex flex-column">

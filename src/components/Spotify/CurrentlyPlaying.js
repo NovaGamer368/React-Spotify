@@ -96,6 +96,12 @@ const CurrentlyPlaying = ({ token }) => {
               {Math.round(calculateProgress())}%
             </div>
           </div>
+          <button
+            className="btn btn-primary my-3 mx-auto rounded w-50"
+            onClick={togglePlayback}
+          >
+            {isPlaying ? "Pause" : "Play"}
+          </button>
         </div>
       ) : (
         <>
@@ -104,9 +110,6 @@ const CurrentlyPlaying = ({ token }) => {
           </div>
         </>
       )}
-      <button className="btn btn-primary mt-3 rounded" onClick={togglePlayback}>
-        {isPlaying ? "Pause" : "Play"}
-      </button>
     </div>
   );
 };

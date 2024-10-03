@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Loading from "./Loading";
 
 const Callback = ({ expiresIn }) => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const Callback = ({ expiresIn }) => {
     }
   }, [expiresIn, navigate]);
 
-  return <div>Loading...</div>;
+  return <Loading />;
 };
 
 export default Callback;

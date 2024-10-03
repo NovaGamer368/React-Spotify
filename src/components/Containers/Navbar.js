@@ -6,6 +6,14 @@ const NavigationBar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [token] = useState(window.localStorage.getItem("token"));
 
+  const loginUrl = `${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${
+    process.env.REACT_APP_CLIENT_ID
+  }&redirect_uri=${encodeURIComponent(
+    process.env.REACT_APP_REDIRECT_URI
+  )}&scope=${encodeURIComponent(process.env.REACT_APP_SCOPE)}&response_type=${
+    process.env.REACT_APP_RESPONSE_TYPE
+  }&show_dialog=true`;
+
   const toggleDropdown = (e) => {
     e.preventDefault();
     setShowDropdown(!showDropdown);
@@ -40,48 +48,52 @@ const NavigationBar = () => {
         className="collapse navbar-collapse text-center align-center h-100"
         id="navbarNav"
       >
-        <ul className="navbar-nav ml-auto">
-          <li className="nav-item">
-            <Link className="nav-link text-white" to="/playlists">
-              Playlists
-            </Link>
-          </li>
-        </ul>
         {token ? (
-          <div className="nav-item dropdown d-flex justify-content-end w-100">
-            <button
-              className="dropdown-toggle text-white"
-              onClick={toggleDropdown}
-              id="navbarDropdown"
-              aria-haspopup="true"
-              aria-expanded={showDropdown}
-            >
-              <UserAvatar token={token} />{" "}
-            </button>
-            {showDropdown && (
-              <div className="dropdown-menu dropdown-menu-right show mt-5">
-                <Link
-                  className="dropdown-item"
-                  to="/account"
-                  onClick={handleDropdownClose}
-                >
-                  View Account
+          <>
+            <ul className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <Link className="nav-link text-white" to="/playlists">
+                  Playlists
                 </Link>
-                <div className="dropdown-divider"></div>
-                <button
-                  className="dropdown-item"
-                  onClick={() => {
-                    logout();
-                  }}
-                >
-                  Logout
-                </button>
-              </div>
-            )}
-          </div>
+              </li>
+            </ul>
+            <div className="nav-item dropdown d-flex justify-content-end w-100">
+              <button
+                className="nav-link dropdown-toggle text-white"
+                onClick={toggleDropdown}
+                id="navbarDropdown"
+                aria-haspopup="true"
+                aria-expanded={showDropdown}
+              >
+                <UserAvatar token={token} />{" "}
+              </button>
+              {showDropdown && (
+                <div className="dropdown-menu dropdown-menu-right show mt-5">
+                  <Link
+                    className="dropdown-item"
+                    to="/account"
+                    onClick={handleDropdownClose}
+                  >
+                    View Account
+                  </Link>
+                  <div className="dropdown-divider"></div>
+                  <button
+                    className="dropdown-item"
+                    onClick={() => {
+                      logout();
+                    }}
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
+          </>
         ) : (
-          <div className="nav-item">
-            <Link className="nav-link text-white">Login</Link>
+          <div className="nav-item w-100 d-flex justify-content-end">
+            <Link className="nav-link text-white" to={loginUrl}>
+              Login
+            </Link>
           </div>
         )}
       </div>

@@ -11,10 +11,11 @@ import Layout from "./components/Containers/Layout";
 import Callback from "./components/Callback";
 import Playlists from "./components/Spotify/Playlists";
 import UserProfile from "./components/Spotify/UserProfile";
+import Loading from "./components/Loading";
 
 const App = () => {
   const [expiresIn, setExpiresIn] = useState(3600);
-  const [token] = useState(window.localStorage.getItem("token"));
+  const [token, setToken] = useState(window.localStorage.getItem("token"));
 
   useEffect(() => {
     const checkTokenExpiration = () => {
@@ -61,7 +62,11 @@ const App = () => {
       path: "/playlists",
       element: (
         <Layout>
-          {token ? <Playlists token={token} /> : <div>Loading...</div>}
+          {token ? (
+            <Playlists token={token} />
+          ) : (
+            <Loading setToken={setToken} />
+          )}
         </Layout>
       ),
     },

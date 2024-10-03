@@ -32,7 +32,6 @@ const UserAvatar = ({ token }) => {
     />
   ) : (
     <img
-      src="https://via.placeholder.com/30" // Fallback avatar
       alt="Avatar"
       className="rounded-circle"
       style={{ width: "30px", height: "30px" }}
