@@ -60,9 +60,9 @@ const CurrentlyPlaying = ({ token }) => {
   };
 
   return (
-    <div className="d-flex flex-column align-items-center">
+    <div className=" w-100 d-flex flex-column align-items-center border border-primary">
       <h3 className="my-4 text-center text-decoration-underline">
-        Currently Playing
+        Now Playing
       </h3>
       {currentTrack ? (
         <div className="d-flex flex-column w-100">
@@ -107,6 +107,10 @@ const CurrentlyPlaying = ({ token }) => {
         <>
           <div className="text-center my-4">
             <p className="text-muted mt-2">No track is currently playing.</p>
+            <p className="text-muted mt-2">
+              Start playing a track on one of your signed in devices to see this
+              component
+            </p>
           </div>
         </>
       )}

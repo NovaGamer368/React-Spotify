@@ -60,26 +60,31 @@ const TopTracks = ({ token }) => {
     }));
   }, [topTracks]);
 
-  if (memoizedTopTracks <= 0) {
+  if (memoizedTopTracks.length <= 0) {
     return <Loading />;
   }
 
   return (
     <div className="d-flex flex-column">
-      <h3 className="my-4 text-center text-decoration-underline">Top Tracks</h3>
-      <ul className="list-group flex-row flex-wrap">
-        {memoizedTopTracks.map((track) => (
+      <h3 className="my-4 text-center text-decoration-underline">
+        My Top Tracks
+      </h3>
+      <ul className="list-group">
+        {memoizedTopTracks.map((track, index) => (
           <li
             key={track.id}
-            className="list-group-item list-group-item-action w-50 p-3 bg-primary text-white rounded-5 mb-2"
+            className="list-group-item list-group-item-action w-100 p-3 bg-primary text-white rounded-5 mb-2"
           >
-            <div className="d-flex justify-content-between align-items-center">
-              <img
-                src={track.imageUrl}
-                alt={track.name}
-                style={{ width: "50px", height: "50px" }}
-              />
-              <div>
+            <div className="d-flex justify-content-between align-items-center ">
+              <div className="d-flex flex-row justify-content-center align-items-center pr-2">
+                <div className="mx-2">{index + 1}.</div>
+                <img
+                  src={track.imageUrl}
+                  alt={track.name}
+                  style={{ width: "50px", height: "50px" }}
+                />
+              </div>
+              <div className="px-2">
                 <h5 className="mb-1 text-end ">{track.name}</h5>
                 <div className="text-end">{track.artists}</div>
               </div>
