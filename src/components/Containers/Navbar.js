@@ -14,6 +14,11 @@ const NavigationBar = () => {
   const handleDropdownClose = () => {
     setShowDropdown(false);
   };
+  const logout = () => {
+    window.localStorage.removeItem("token");
+    window.location.href = "/";
+    handleDropdownClose();
+  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-primary bg-primary sticky-top p-4">
@@ -37,16 +42,15 @@ const NavigationBar = () => {
       >
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <Link className="nav-link text-white" to="/currently-playing">
+            <Link className="nav-link text-white" to="/playlists">
               Playlists
             </Link>
           </li>
         </ul>
         {token ? (
           <div className="nav-item dropdown d-flex justify-content-end w-100">
-            <a
+            <button
               className="nav-link dropdown-toggle text-white"
-              href="#"
               onClick={toggleDropdown}
               id="navbarDropdown"
               role="button"
@@ -54,7 +58,7 @@ const NavigationBar = () => {
               aria-expanded={showDropdown}
             >
               <UserAvatar token={token} />{" "}
-            </a>
+            </button>
             {showDropdown && (
               <div className="dropdown-menu dropdown-menu-right show mt-5">
                 <Link
@@ -65,15 +69,14 @@ const NavigationBar = () => {
                   View Account
                 </Link>
                 <div className="dropdown-divider"></div>
-                <a
+                <button
                   className="dropdown-item"
-                  href="#"
                   onClick={() => {
-                    /* handle logout */ handleDropdownClose();
+                    logout();
                   }}
                 >
                   Logout
-                </a>
+                </button>
               </div>
             )}
           </div>

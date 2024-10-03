@@ -28,7 +28,7 @@ const UserAvatar = ({ token }) => {
       src={userProfile.images[0]?.url}
       alt={userProfile.display_name}
       className="rounded-circle"
-      style={{ width: "30px", height: "30px" }}
+      style={{ width: "50px", height: "50px" }}
     />
   ) : (
     <img

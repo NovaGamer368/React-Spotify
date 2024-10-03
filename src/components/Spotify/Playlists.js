@@ -21,17 +21,24 @@ const Playlists = ({ token }) => {
   }, [token]);
 
   return (
-    <div>
-      <h2>Your Playlists</h2>
-      <ul>
+    <div className="d-flex flex-column flex-grow-1">
+      <h3 className="my-4 text-center text-decoration-underline">
+        Your Playlists
+      </h3>
+      <ul className="list-group flex-row flex-wrap">
         {playlists.map((playlist) => (
-          <li key={playlist.id}>
-            <img
-              src={playlist.images[0]?.url}
-              alt={playlist.name}
-              style={{ width: "50px", height: "50px" }}
-            />
-            <p>{playlist.name}</p>
+          <li
+            className="list-group-item list-group-item-action w-50 p-3 bg-primary text-white rounded-5 mb-2"
+            key={playlist.id}
+          >
+            <div className="d-flex justify-content-between align-items-center">
+              <img
+                src={playlist.images[0]?.url}
+                alt={playlist.name}
+                style={{ width: "50px", height: "50px" }}
+              />
+              <p className="text-end">{playlist.name}</p>
+            </div>
           </li>
         ))}
       </ul>

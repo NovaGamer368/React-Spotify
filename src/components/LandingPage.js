@@ -4,6 +4,7 @@ import CurrentlyPlaying from "./Spotify/CurrentlyPlaying";
 
 const LandingPage = () => {
   const [token, setToken] = useState("");
+
   const loginUrl = `${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${
     process.env.REACT_APP_CLIENT_ID
   }&redirect_uri=${encodeURIComponent(

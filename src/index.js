@@ -4,29 +4,35 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/index.css";
 import "./styles/bootstrap.css";
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-  useNavigate,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import LandingPage from "./components/LandingPage";
 import Layout from "./components/Containers/Layout";
 import Callback from "./components/Callback";
+import Playlists from "./components/Spotify/Playlists";
+import UserProfile from "./components/Spotify/UserProfile";
 
 const App = () => {
   const [expiresIn, setExpiresIn] = useState(3600);
+  const [token] = useState(window.localStorage.getItem("token"));
 
   useEffect(() => {
-    if (expiresIn) {
-      const tokenExpiryTimeout = setTimeout(() => {
+    const checkTokenExpiration = () => {
+      const expirationTime =
+        parseInt(window.localStorage.getItem("login_time")) +
+        parseInt(expiresIn);
+      const currentTime = Math.floor(Date.now() / 1000);
+
+      if (currentTime >= expirationTime) {
         window.localStorage.removeItem("token");
         alert("Your session has expired. Please log in again.");
         window.location.href = "/";
-      }, expiresIn * 1000);
+      }
+    };
 
-      return () => clearTimeout(tokenExpiryTimeout);
-    }
+    const interval = setInterval(checkTokenExpiration, 1000);
+
+    return () => clearInterval(interval);
   }, [expiresIn]);
 
   const router = createBrowserRouter([
@@ -40,11 +46,24 @@ const App = () => {
     },
     {
       path: "account",
-      element: <Layout>{/* <UserProfile token={token} /> */}</Layout>,
+      element: (
+        <Layout>
+          {" "}
+          <UserProfile token={token} />{" "}
+        </Layout>
+      ),
     },
     {
       path: "/callback",
       element: <Callback expiresIn={setExpiresIn} />,
+    },
+    {
+      path: "/playlists",
+      element: (
+        <Layout>
+          {token ? <Playlists token={token} /> : <div>Loading...</div>}
+        </Layout>
+      ),
     },
   ]);
   return <RouterProvider router={router} />;
