@@ -8,6 +8,12 @@ const Callback = ({ expiresIn }) => {
   useEffect(() => {
     const hash = window.location.hash;
 
+    const urlParams = new URLSearchParams(window.location.search);
+    const error = urlParams.get("error");
+
+    if (error) {
+      navigate("/");
+    }
     if (hash) {
       const params = new URLSearchParams(hash.substring(1));
       const accessToken = params.get("access_token");

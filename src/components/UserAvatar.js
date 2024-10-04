@@ -31,11 +31,7 @@ const UserAvatar = ({ token }) => {
       style={{ width: "50px", height: "50px" }}
     />
   ) : (
-    <img
-      alt="Avatar"
-      className="rounded-circle"
-      style={{ width: "30px", height: "30px" }}
-    />
+    <div>Welcome {userProfile ? userProfile.display_name : "user"}</div>
   );
 };
 
