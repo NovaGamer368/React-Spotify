@@ -10,9 +10,9 @@ import reportWebVitals from "./reportWebVitals";
 import LandingPage from "./components/LandingPage";
 import Layout from "./components/Containers/Layout";
 import Callback from "./components/Callback";
-import Playlists from "./components/Spotify/Playlists";
 import UserProfile from "./components/Spotify/UserProfile";
 import Loading from "./components/Loading";
+import PlaylistsContainer from "./components/Containers/PlaylistsContainer";
 
 const App = () => {
   const [expiresIn, setExpiresIn] = useState(3600);
@@ -68,7 +68,7 @@ const App = () => {
       element: (
         <Layout>
           {token ? (
-            <Playlists token={token} />
+            <PlaylistsContainer token={token} />
           ) : (
             <Loading setToken={setToken} />
           )}

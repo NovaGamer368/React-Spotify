@@ -60,30 +60,33 @@ const CurrentlyPlaying = ({ token }) => {
   };
 
   return (
-    <div className=" w-100 d-flex flex-column align-items-center border border-primary p-2">
+    <div className="w-100 d-flex flex-column align-items-center border border-primary rounded-5 p-2">
       <h3 className="my-4 text-center text-decoration-underline">
         Now Playing
       </h3>
       {currentTrack ? (
         <div className="d-flex flex-column w-100">
-          <div className="w-100 d-flex justify-content-around ">
-            <img
-              src={currentTrack.item.album.images[0]?.url}
-              alt={currentTrack.item.name}
-              className="img-fluid mb-3"
-              style={{ width: "100px", height: "100px" }}
-            />
-            <div>
-              <h5 className="mb-1">{currentTrack.item.name}</h5>
-              <div className="text-center mb-2">
-                {currentTrack.item.artists
-                  ? currentTrack.item.artists
-                      .map((artist) => artist.name)
-                      .join(", ")
-                  : "Unknown Artist"}
+          <div className="d-flex flex-column w-100">
+            <div className="w-100 d-flex flex-column flex-lg-row justify-content-around align-items-center text-center">
+              <img
+                src={currentTrack.item.album.images[0]?.url}
+                alt={currentTrack.item.name}
+                className="img-fluid mb-3 col-4 col-lg-2"
+                style={{ width: "150px", height: "150px" }}
+              />
+              <div className="col-8 col-lg-10">
+                <h5 className="mb-1">{currentTrack.item.name}</h5>
+                <div className="text-center mb-2">
+                  {currentTrack.item.artists
+                    ? currentTrack.item.artists
+                        .map((artist) => artist.name)
+                        .join(", ")
+                    : "Unknown Artist"}
+                </div>
               </div>
             </div>
           </div>
+
           <div className="progress w-100 rounded">
             <div
               className="progress-bar rounded"
@@ -106,20 +109,18 @@ const CurrentlyPlaying = ({ token }) => {
             {isPlaying ? (
               <i className="bi bi-pause-fill fs-1"></i>
             ) : (
-              <i classNamex="bi bi-play-fill fs-1"></i>
+              <i className="bi bi-play-fill fs-1"></i>
             )}
           </button>
         </div>
       ) : (
-        <>
-          <div className="text-center my-4">
-            <p className="text-muted mt-2">No track is currently playing.</p>
-            <p className="text-muted mt-2">
-              Start playing a track on one of your signed in devices to see this
-              component
-            </p>
-          </div>
-        </>
+        <div className="text-center my-4">
+          <p className="text-muted mt-2">No track is currently playing.</p>
+          <p className="text-muted mt-2">
+            Start playing a track on one of your signed-in devices to see this
+            component.
+          </p>
+        </div>
       )}
     </div>
   );

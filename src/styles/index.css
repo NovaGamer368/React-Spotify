@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* My CSS */
+.overflow-container {
+  min-height: 200px;
+  max-height: 725px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

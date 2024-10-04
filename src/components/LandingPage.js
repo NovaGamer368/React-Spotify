@@ -32,19 +32,11 @@ const LandingPage = () => {
           </a>
         </div>
       ) : (
-        <div className="d-flex flex-row">
-          <div className="w-50 py-2 px-4 d-flex justify-content-center align-items-center">
+        <div className="d-flex flex-row flex-wrap">
+          <div className="col-12 col-lg-6 px-4 d-flex justify-content-center align-items-center mb-4">
             <CurrentlyPlaying token={token} />
           </div>
-          <div
-            className="w-50"
-            style={{
-              minHeight: "200px",
-              maxHeight: "725px",
-              overflowY: "auto",
-              overflowX: "hidden",
-            }}
-          >
+          <div className="col-12 col-lg-6 overflow-container">
             <TopTracks token={token} />
           </div>
         </div>

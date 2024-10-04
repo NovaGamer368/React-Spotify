@@ -21,14 +21,14 @@ const Playlists = ({ token }) => {
   }, [token]);
 
   return (
-    <div className="d-flex flex-column flex-grow-1">
+    <div className="d-flex flex-column flex-grow-1 mx-2">
       <h3 className="my-4 text-center text-decoration-underline">
-        Your Playlists
+        Your top 10 Playlists
       </h3>
       <ul className="list-group flex-row flex-wrap">
         {playlists.map((playlist) => (
           <li
-            className="list-group-item list-group-item-action w-50 p-3 bg-primary text-white rounded-5 mb-2"
+            className="list-group-item list-group-item-action p-3 bg-primary text-white rounded-5 mb-2"
             key={playlist.id}
           >
             <div className="d-flex justify-content-between align-items-center">
