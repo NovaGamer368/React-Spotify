@@ -19,15 +19,19 @@ const App = () => {
 
   useEffect(() => {
     const checkTokenExpiration = () => {
-      const expirationTime =
-        parseInt(window.localStorage.getItem("login_time")) +
-        parseInt(expiresIn);
-      const currentTime = Math.floor(Date.now() / 1000);
+      let loginTime = window.localStorage.getItem("login_time");
+      if (loginTime) {
+        const expirationTime =
+          parseInt(window.localStorage.getItem("login_time")) +
+          parseInt(expiresIn);
+        const currentTime = Math.floor(Date.now() / 1000);
 
-      if (currentTime >= expirationTime) {
-        window.localStorage.removeItem("token");
-        alert("Your session has expired. Please log in again.");
-        window.location.href = "/";
+        if (currentTime >= expirationTime) {
+          window.localStorage.removeItem("token");
+          window.localStorage.removeItem("login_time");
+          alert("Your session has expired. Please log in again.");
+          window.location.href = "/";
+        }
       }
     };
 
