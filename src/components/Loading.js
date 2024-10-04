@@ -8,7 +8,7 @@ const Loading = ({ setToken }) => {
     }
   }, []);
   return (
-    <div className="d-flex flex-row justify-content-center align-items-center">
+    <div className="d-flex flex-row justify-content-center align-items-center vh-75">
       <div className="spinner-border mx-3 my-auto" role="status">
         <span className="visually-hidden">Loading...</span>
       </div>
