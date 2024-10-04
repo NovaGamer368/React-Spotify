@@ -13,6 +13,7 @@ import Callback from "./components/Callback";
 import UserProfile from "./components/Spotify/UserProfile";
 import Loading from "./components/Loading";
 import PlaylistsContainer from "./components/Containers/PlaylistsContainer";
+import ErrorPage from "./components/ErrorPage";
 
 const App = () => {
   const [expiresIn, setExpiresIn] = useState(3600);
@@ -72,6 +73,14 @@ const App = () => {
           ) : (
             <Loading setToken={setToken} />
           )}
+        </Layout>
+      ),
+    },
+    {
+      path: "*",
+      element: (
+        <Layout>
+          <ErrorPage />
         </Layout>
       ),
     },

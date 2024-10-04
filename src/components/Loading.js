@@ -1,10 +1,16 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Loading = ({ setToken }) => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (setToken) {
       const token = window.localStorage.getItem("token");
       setToken(token);
+      if (token === null) {
+        navigate("/");
+      }
     }
   }, []);
   return (
