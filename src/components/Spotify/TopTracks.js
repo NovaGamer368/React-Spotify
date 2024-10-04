@@ -65,7 +65,7 @@ const TopTracks = ({ token }) => {
   }
 
   return (
-    <div className="d-flex flex-column">
+    <div className="d-flex flex-column h-auto">
       <h3 className="my-4 text-center text-decoration-underline">
         My Top Tracks
       </h3>

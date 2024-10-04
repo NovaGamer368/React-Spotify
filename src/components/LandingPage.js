@@ -40,7 +40,7 @@ const LandingPage = () => {
             className="w-50"
             style={{
               minHeight: "200px",
-              maxHeight: "675px",
+              maxHeight: "725px",
               overflowY: "auto",
               overflowX: "hidden",
             }}

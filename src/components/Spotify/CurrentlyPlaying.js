@@ -33,8 +33,8 @@ const CurrentlyPlaying = ({ token }) => {
 
   const calculateProgress = () => {
     if (currentTrack) {
-      const duration = currentTrack.item.duration_ms; // Total track duration
-      return (progress / duration) * 100; // Calculate percentage
+      const duration = currentTrack.item.duration_ms;
+      return (progress / duration) * 100;
     }
     return 0;
   };
@@ -60,7 +60,7 @@ const CurrentlyPlaying = ({ token }) => {
   };
 
   return (
-    <div className=" w-100 d-flex flex-column align-items-center border border-primary">
+    <div className=" w-100 d-flex flex-column align-items-center border border-primary p-2">
       <h3 className="my-4 text-center text-decoration-underline">
         Now Playing
       </h3>
@@ -97,10 +97,17 @@ const CurrentlyPlaying = ({ token }) => {
             </div>
           </div>
           <button
-            className="btn btn-primary my-3 mx-auto rounded w-50"
+            className="btn btn-primary my-3 mx-auto rounded rounded-circle"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            title={isPlaying ? "Pause" : "Play"}
             onClick={togglePlayback}
           >
-            {isPlaying ? "Pause" : "Play"}
+            {isPlaying ? (
+              <i className="bi bi-pause-fill fs-1"></i>
+            ) : (
+              <i classNamex="bi bi-play-fill fs-1"></i>
+            )}
           </button>
         </div>
       ) : (
