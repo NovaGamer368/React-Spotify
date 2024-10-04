@@ -4,10 +4,10 @@ import Navbar from "./Navbar";
 const Layout = ({ children }) => {
   return (
     <>
-      <head>
+      <div>
         <title>React Spotify App</title>
-      </head>
-      <body class="d-flex flex-column min-vh-100">
+      </div>
+      <div className="d-flex flex-column min-vh-100">
         <Navbar />
         <div className="container mt-5">
           <div>{children}</div>
@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
             reserved.
           </div>
         </footer>
-      </body>
+      </div>
     </>
   );
 };

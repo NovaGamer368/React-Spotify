@@ -71,10 +71,10 @@ const CurrentlyPlaying = ({ token }) => {
               <img
                 src={currentTrack.item.album.images[0]?.url}
                 alt={currentTrack.item.name}
-                className="img-fluid mb-3 col-4 col-lg-2"
+                className="img-fluid mb-3"
                 style={{ width: "150px", height: "150px" }}
               />
-              <div className="col-8 col-lg-10">
+              <div>
                 <h5 className="mb-1">{currentTrack.item.name}</h5>
                 <div className="text-center mb-2">
                   {currentTrack.item.artists
