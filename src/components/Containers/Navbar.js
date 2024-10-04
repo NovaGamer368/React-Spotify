@@ -7,14 +7,6 @@ const NavigationBar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [token] = useState(window.localStorage.getItem("token"));
 
-  const loginUrl = `${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${
-    process.env.REACT_APP_CLIENT_ID
-  }&redirect_uri=${encodeURIComponent(
-    process.env.REACT_APP_REDIRECT_URI
-  )}&scope=${encodeURIComponent(process.env.REACT_APP_SCOPE)}&response_type=${
-    process.env.REACT_APP_RESPONSE_TYPE
-  }&show_dialog=true`;
-
   const toggleDropdown = (e) => {
     e.preventDefault();
     setShowDropdown((prev) => !prev);
@@ -22,6 +14,17 @@ const NavigationBar = () => {
 
   const handleDropdownClose = () => {
     setShowDropdown(false);
+  };
+
+  const login = () => {
+    const loginUrl = `${
+      process.env.REACT_APP_AUTH_ENDPOINT
+    }?redirect_uri=${encodeURIComponent(
+      process.env.REACT_APP_REDIRECT_URI
+    )}&scope=${encodeURIComponent(process.env.REACT_APP_SCOPE)}&response_type=${
+      process.env.REACT_APP_RESPONSE_TYPE
+    }&show_dialog=true&client_id=${process.env.REACT_APP_CLIENT_ID}`;
+    window.location.href = loginUrl;
   };
 
   const logout = () => {
@@ -89,9 +92,9 @@ const NavigationBar = () => {
             </>
           ) : (
             <div className="nav-item w-100 d-flex justify-content-end mt-4">
-              <Link className="nav-link text-white" to={loginUrl}>
+              <button className="nav-link btn text-white" onClick={login}>
                 Login
-              </Link>
+              </button>
             </div>
           )}
         </div>

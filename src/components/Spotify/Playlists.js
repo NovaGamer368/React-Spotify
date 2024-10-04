@@ -26,21 +26,31 @@ const Playlists = ({ token }) => {
         Your top 10 Playlists
       </h3>
       <ul className="list-group flex-row flex-wrap">
-        {playlists.map((playlist) => (
-          <li
-            className="list-group-item list-group-item-action p-3 bg-primary text-white rounded-5 mb-2"
-            key={playlist.id}
-          >
-            <div className="d-flex justify-content-between align-items-center">
-              <img
-                src={playlist.images[0]?.url}
-                alt={playlist.name}
-                style={{ width: "75px", height: "75px" }}
-              />
-              <p className="text-end">{playlist.name}</p>
-            </div>
-          </li>
-        ))}
+        {playlists.length <= 0 ? (
+          <>
+            <h4 className="text-center">
+              You have no Playlists on your profile
+            </h4>
+          </>
+        ) : (
+          <>
+            {playlists.map((playlist) => (
+              <li
+                className="list-group-item list-group-item-action p-3 bg-primary text-white rounded-5 mb-2"
+                key={playlist.id}
+              >
+                <div className="d-flex justify-content-between align-items-center">
+                  <img
+                    src={playlist.images[0]?.url}
+                    alt={playlist.name}
+                    style={{ width: "75px", height: "75px" }}
+                  />
+                  <p className="text-end">{playlist.name}</p>
+                </div>
+              </li>
+            ))}
+          </>
+        )}
       </ul>
     </div>
   );
