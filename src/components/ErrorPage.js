@@ -1,14 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
   return (
-    <div style={{ textAlign: "center", padding: "50px" }}>
+    <div className="text-center p-2">
       <h1>Oops! Something went wrong.</h1>
       <p>
         Looks like we couldn't find that song. Did it get lost in the shuffle?
       </p>
       <p>
-        Don’t worry, you can always get back to <a href="/">home</a>!
+        Don’t worry, you can always get back to <Link to="/">home</Link>!
       </p>
     </div>
   );
