@@ -20,3 +20,6 @@ REACT_APP_SCOPE=user-top-read user-read-currently-playing user-read-playback-sta
 
 4. Open a terminal and run the `npm install` command
 5. Run the project by running the `npm start` command
+
+# Visit it here
+[website](https://bp-react-spotify.vercel.app)
