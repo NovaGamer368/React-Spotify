@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
       <div>
         <title>React Spotify App</title>
       </div>
-      <div className="d-flex flex-column min-vh-100">
+      <div className="d-flex flex-column min-vh-100 app-min-width">
         <Navbar />
         <div className="container mt-5">
           <div>{children}</div>

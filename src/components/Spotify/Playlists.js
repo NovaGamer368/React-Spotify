@@ -35,7 +35,7 @@ const Playlists = ({ token }) => {
               <img
                 src={playlist.images[0]?.url}
                 alt={playlist.name}
-                style={{ width: "50px", height: "50px" }}
+                style={{ width: "75px", height: "75px" }}
               />
               <p className="text-end">{playlist.name}</p>
             </div>

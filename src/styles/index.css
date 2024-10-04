@@ -19,3 +19,6 @@ code {
   overflow-y: auto;
   overflow-x: hidden;
 }
+.app-min-width{
+  min-width: 375px;
+}
