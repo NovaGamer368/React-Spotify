@@ -27,11 +27,9 @@ const Playlists = ({ token }) => {
       </h3>
       <ul className="list-group flex-row flex-wrap">
         {playlists.length <= 0 ? (
-          <>
-            <h4 className="text-center">
-              You have no Playlists on your profile
-            </h4>
-          </>
+          <h4 className="text-center w-100">
+            You have no Playlists on your profile
+          </h4>
         ) : (
           <>
             {playlists.map((playlist) => (
